@@ -17,8 +17,8 @@
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.0.9",
-        "commit": "e55699228a91ea94e9349a7fd62361c5b172f069"
+        "tag": "v0.1.0",
+        "commit": "4d7c6df4b740b9f3ec4acd2e0425c21748fe5429"
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",

@@ -24,6 +24,12 @@ Router.map ->
 				Meteor.subscribe 'delayed-collection3'
 			]
 
+	@route 'stop',
+		path                : '/stop'
+		before : ->
+			@render 'stopped'
+			@stop()
+
 	@route 'notHere',
 		path : '/not-here'
 		data : ->
