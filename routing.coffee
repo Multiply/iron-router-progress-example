@@ -7,22 +7,30 @@ Router.map ->
 	@route 'home',
 		path : '/'
 
-	@route 'delay',
-		path   : '/delay'
-		# Example of using the before hooks
+	# Example of using the before hooks
+	@route 'before',
+		path   : '/before'
 		before : [
-			-> @subscribe('delayed-collection4').wait()
 			-> @subscribe('delayed-collection1').wait()
+			-> @subscribe('delayed-collection6').wait()
 		]
 
-	@route 'delayNoTick',
-		path                : '/delay-no-tick'
-		disableProgressTick : true
-		# Examle of using waitOn
-		waitOn              : ->
+	# Examle of using waitOn
+	@route 'waitOn',
+		path   : '/waiton'
+		waitOn : ->
 			[
 				Meteor.subscribe 'delayed-collection2'
+				Meteor.subscribe 'delayed-collection5'
+			]
+
+	@route 'waitOnNoTick',
+		path                : '/waiton-no-tick'
+		disableProgressTick : true
+		waitOn              : ->
+			[
 				Meteor.subscribe 'delayed-collection3'
+				Meteor.subscribe 'delayed-collection4'
 			]
 
 	@route 'stop',
