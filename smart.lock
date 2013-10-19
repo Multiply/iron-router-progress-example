@@ -13,12 +13,12 @@
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "branch": "dev",
-        "commit": "13d0007ee9dfa1a111a0e55eedcf002c593f5489"
+        "commit": "622c4093db9e3197012705ab0f107da1e0c8851e"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.1.1",
-        "commit": "1dcfdb00aaa7c0d314ac462bca0955e37bae8455"
+        "tag": "v0.1.2",
+        "commit": "e6f382c90c0847542d0946f32f4f78008038a8b4"
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
