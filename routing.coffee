@@ -1,5 +1,5 @@
 Router.configure
-	autoRender       : false
+#	autoRender       : false
 	layoutTemplate   : 'layout'
 	notFoundTemplate : 'notFound'
 
@@ -25,16 +25,17 @@ Router.map ->
 			]
 
 	@route 'waitOnNoTick',
-		path                : '/waiton-no-tick'
-		disableProgressTick : true
-		waitOn              : ->
+		path     : '/waiton-no-tick'
+		progress :
+			tick : true
+		waitOn   : ->
 			[
 				Meteor.subscribe 'delayed-collection3'
 				Meteor.subscribe 'delayed-collection4'
 			]
 
 	@route 'stop',
-		path                : '/stop'
+		path   : '/stop'
 		before : ->
 			@render 'stopped'
 			@stop()

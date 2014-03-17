@@ -6,6 +6,7 @@
 standard-app-packages
 insecure
 preserve-inputs
+blaze-layout
 iron-router
 iron-router-progress
 coffeescript
