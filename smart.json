@@ -2,7 +2,7 @@
   "packages": {
     "iron-router": {
       "git": "https://github.com/EventedMind/iron-router.git",
-      "branch": "blaze-integration"
+      "branch": "dev"
     },
     "iron-router-progress": {
       "git": "https://github.com/Multiply/iron-router-progress.git",

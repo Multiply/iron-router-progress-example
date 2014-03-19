@@ -4,7 +4,7 @@
     "basePackages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "blaze-integration"
+        "branch": "dev"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
@@ -15,8 +15,8 @@
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "blaze-integration",
-        "commit": "fa800c3e522658786972993d724bc8b6e7fa4d1c"
+        "branch": "dev",
+        "commit": "78f133d79e805fba387e80318645347d82ff9b3d"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
@@ -27,6 +27,11 @@
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
         "tag": "v3.1.1-1",
         "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "branch": "master",
+        "commit": "f52f416d6277f27b11832355298553e46b8cc6fd"
       }
     }
   }

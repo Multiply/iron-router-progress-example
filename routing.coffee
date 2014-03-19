@@ -10,7 +10,7 @@ Router.map ->
 	# Example of using the before hooks
 	@route 'before',
 		path   : '/before'
-		before : [
+		onBeforeAction : [
 			-> @subscribe('delayed-collection1').wait()
 			-> @subscribe('delayed-collection6').wait()
 		]
@@ -36,7 +36,7 @@ Router.map ->
 
 	@route 'stop',
 		path   : '/stop'
-		before : ->
+		onBeforeAction : ->
 			@render 'stopped'
 			@stop()
 
