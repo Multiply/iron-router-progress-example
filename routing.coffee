@@ -3,6 +3,10 @@ Router.configure
 	layoutTemplate   : 'layout'
 	notFoundTemplate : 'notFound'
 
+if Meteor.isClient
+	IronRouterProgress.configure
+		spinner : true
+
 Router.map ->
 	@route 'home',
 		path : '/'
@@ -11,8 +15,18 @@ Router.map ->
 	@route 'before',
 		path   : '/before'
 		onBeforeAction : [
-			-> @subscribe('delayed-collection1').wait()
-			-> @subscribe('delayed-collection6').wait()
+			-> @subscribe('before-collection1').wait()
+			-> @subscribe('before-collection2').wait()
+		]
+
+	# Example of using the before with no spinner
+	@route 'beforeNoSpinner',
+		path   : '/before-no-spinner'
+		progress :
+			spinner : false
+		onBeforeAction : [
+			-> @subscribe('before-no-spinner-collection1').wait()
+			-> @subscribe('before-no-spinner-collection2').wait()
 		]
 
 	# Examle of using waitOn
@@ -20,8 +34,8 @@ Router.map ->
 		path   : '/waiton'
 		waitOn : ->
 			[
-				Meteor.subscribe 'delayed-collection2'
-				Meteor.subscribe 'delayed-collection5'
+				Meteor.subscribe 'wait-on-collection1'
+				Meteor.subscribe 'wait-on-collection2'
 			]
 
 	@route 'waitOnNoTick',
@@ -30,8 +44,8 @@ Router.map ->
 			tick : true
 		waitOn   : ->
 			[
-				Meteor.subscribe 'delayed-collection3'
-				Meteor.subscribe 'delayed-collection4'
+				Meteor.subscribe 'wait-on-no-tick-collection1'
+				Meteor.subscribe 'wait-on-no-tick-collection2'
 			]
 
 	@route 'stop',
@@ -43,4 +57,4 @@ Router.map ->
 	@route 'notHere',
 		path : '/not-here'
 		data : ->
-			DelayedCollections.one.findOne()
+			DelayedCollections['not-here'].findOne()
