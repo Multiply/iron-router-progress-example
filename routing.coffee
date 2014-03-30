@@ -13,7 +13,7 @@ Router.map ->
 
 	# Example of using the before hooks
 	@route 'before',
-		path   : '/before'
+		path           : '/before'
 		onBeforeAction : [
 			-> @subscribe('before-collection1').wait()
 			-> @subscribe('before-collection2').wait()
@@ -21,7 +21,7 @@ Router.map ->
 
 	# Example of using the before with no spinner
 	@route 'beforeNoSpinner',
-		path   : '/before-no-spinner'
+		path     : '/before-no-spinner'
 		progress :
 			spinner : false
 		onBeforeAction : [
@@ -49,7 +49,7 @@ Router.map ->
 			]
 
 	@route 'stop',
-		path   : '/stop'
+		path           : '/stop'
 		onBeforeAction : ->
 			@render 'stopped'
 			@stop()
