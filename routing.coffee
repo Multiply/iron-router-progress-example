@@ -58,3 +58,8 @@ Router.map ->
 		path : '/not-here'
 		data : ->
 			DelayedCollections['not-here'].findOne()
+
+	@route 'disabled',
+		path : '/disabled'
+		progress :
+			enabled : false
