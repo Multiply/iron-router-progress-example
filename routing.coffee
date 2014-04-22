@@ -7,6 +7,8 @@ if Meteor.isClient
 	IronRouterProgress.configure
 		spinner : true
 
+Router.onBeforeAction 'dataNotFound'
+
 Router.map ->
 	@route 'home',
 		path : '/'
@@ -55,9 +57,10 @@ Router.map ->
 			@stop()
 
 	@route 'notHere',
-		path : '/not-here'
-		data : ->
-			DelayedCollections['not-here'].findOne()
+		path             : '/not-here'
+		notFoundTemplate : 'notFound'
+		data             : ->
+			DelayedCollections['not-here-collection1'].findOne()
 
 	@route 'disabled',
 		path : '/disabled'
