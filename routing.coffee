@@ -1,68 +1,67 @@
 Router.configure
-#	autoRender       : false
 	layoutTemplate   : 'layout'
 	notFoundTemplate : 'notFound'
 
-if Meteor.isClient
-	IronRouterProgress.configure
-		spinner : true
+# if Meteor.isClient
+# 	IronRouterProgress.configure
+# 		spinner : true
 
 Router.onBeforeAction 'dataNotFound'
 
-Router.map ->
-	@route 'home',
-		path : '/'
+Router.route '/', ->
+	@render 'home'
 
-	# Example of using the before hooks
-	@route 'before',
-		path           : '/before'
-		onBeforeAction : [
-			-> @subscribe('before-collection1').wait()
-			-> @subscribe('before-collection2').wait()
+Router.route '/regular'
+
+Router.route '/wait',
+	waitOn : ->
+		[
+			Meteor.subscribe 'wait-collection1'
+			Meteor.subscribe 'wait-collection2'
 		]
 
-	# Example of using the before with no spinner
-	@route 'beforeNoSpinner',
-		path     : '/before-no-spinner'
-		progress :
-			spinner : false
-		onBeforeAction : [
-			-> @subscribe('before-no-spinner-collection1').wait()
-			-> @subscribe('before-no-spinner-collection2').wait()
+Router.route '/waitOn',
+	loadingTemplate : 'loading'
+	waitOn          : ->
+		[
+			Meteor.subscribe 'waiton-collection1'
+			Meteor.subscribe 'waiton-collection2'
 		]
 
-	# Examle of using waitOn
-	@route 'waitOn',
-		path   : '/waiton'
-		waitOn : ->
-			[
-				Meteor.subscribe 'wait-on-collection1'
-				Meteor.subscribe 'wait-on-collection2'
-			]
+# Example of using the before with no spinner
+Router.route '/noSpinner',
+	progressSpinner : false
+	waitOn : ->
+		[
+			Meteor.subscribe 'no-spinner-collection1'
+			Meteor.subscribe 'no-spinner-collection2'
+		]
 
-	@route 'waitOnNoTick',
-		path     : '/waiton-no-tick'
-		progress :
-			tick : true
-		waitOn   : ->
-			[
-				Meteor.subscribe 'wait-on-no-tick-collection1'
-				Meteor.subscribe 'wait-on-no-tick-collection2'
-			]
+Router.route '/noTick',
+	progressTick : false
+	waitOn   : ->
+		[
+			Meteor.subscribe 'no-tick-collection1'
+			Meteor.subscribe 'no-tick-collection2'
+		]
 
-	@route 'stop',
-		path           : '/stop'
-		onBeforeAction : ->
-			@render 'stopped'
-			@stop()
+Router.route '/delay',
+	progressDelay : 1500
+	waitOn   : ->
+		[
+			Meteor.subscribe 'delay-collection1'
+			Meteor.subscribe 'delay-collection2'
+		]
 
-	@route 'notHere',
-		path             : '/not-here'
-		notFoundTemplate : 'notFound'
-		data             : ->
-			DelayedCollections['not-here-collection1'].findOne()
+Router.route '/stop',
+	onBeforeAction : ->
+		@render 'stopped'
+		@stop()
 
-	@route 'disabled',
-		path : '/disabled'
-		progress :
-			enabled : false
+Router.route '/notHere',
+	notFoundTemplate : 'notFound'
+	waitOn           : ->
+		DelayedCollections['not-here-collection1'].findOne()
+
+Router.route '/disabled',
+	progress : false

@@ -1,9 +1,10 @@
 collectionList = [
-	'before'
-	'before-no-spinner'
-	'wait-on'
-	'wait-on-no-tick'
+	'wait'
+	'waiton'
+	'no-spinner'
+	'no-tick'
 	'not-here'
+	'delay'
 ]
 
 @DelayedCollections = []
@@ -22,6 +23,6 @@ for item in collectionList
 		
 				Meteor.setTimeout ->
 					future.return DelayedCollections["#{item}#{count}"].find()
-				, 1000 * count
+				, 1000 * count + 3
 		
 				future.wait()

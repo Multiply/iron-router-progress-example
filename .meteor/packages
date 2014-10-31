@@ -5,9 +5,9 @@
 
 standard-app-packages
 insecure
-blaze-layout
-iron-router
-iron-router-progress
 coffeescript
 less
-bootstrap-3
+mizzao:bootstrap-3
+iron:router@1.0.0-pre2
+multiply:iron-router-progress@1.0.0-pre3
+
